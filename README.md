@@ -309,17 +309,17 @@ npm run build
 
 ## 7. Project Roadmap & Completed Phases
 
-### ✅ Phase 1: Core Working Prototype (Completed)
+### Phase 1: Core Working Prototype (Completed)
 - Fleet Dashboard, Interactive Simulated Chennai Map, Vehicle CRUD, Background Simulation Engine, Analytics Overview, Alembic Migrations, and Automated Tests.
 
-### ✅ Phase 2: Identity-Based Encryption (IBE) for Telemetry (Completed)
+### Phase 2: Identity-Based Encryption (IBE) for Telemetry (Completed)
 - Genuine Boneh-Franklin BN128 + AES-256-GCM Cryptographic Service.
 - Private Key Generator (PKG) key extraction and derivation.
 - Interactive IBE Security Lab frontend page with live trials and timing comparison charts.
 - Database persistence for scientific trials via Alembic migration `002_ibe_experiments.py`.
 - Benchmark evaluation across 128B, 512B, and 2KB payloads.
 
-### ✅ Phase 3: Secure Vehicle-to-Server Data Transmission (Completed)
+### Phase 3: Secure Vehicle-to-Server Data Transmission (Completed)
 - Integrated vehicle-to-server communication pipeline with Mode A (baseline) and Mode B (IBE-protected).
 - Authenticated Associated Data (AAD) binding sender identity, server recipient, message UUID, and UTC timestamp.
 - Sliding-window replay detection via `processed_message_cache`.
@@ -328,14 +328,14 @@ npm run build
 - Interactive `Secure Transmission Lab` UI with live KPI metrics, 6 attack demonstrations, repeatable batch experiment runner, and record inspector.
 - Complete scientific evaluation documents: `docs/phase-3-implementation-plan.md`, `docs/phase-3-experimental-methodology.md`, `docs/phase-3-results.md`.
 
-### ✅ Phase 4: Blind Quantum Computation (BQC) & Delegated Privacy (Completed)
+### Phase 4: Blind Quantum Computation (BQC) & Delegated Privacy (Completed)
 - Universal Broadbent-Fitzsimons-Kashefi (BFK09) Measurement-Based Quantum Computing protocol.
 - Classical Client state rotation blinding + Untrusted Quantum Cloud Server graph state entanglement and projective measurement simulator.
 - Private Fleet Depot Selection algorithm preserving vehicle GPS coordinates, internal costs, and route goals.
 - Interactive `BQC Privacy Lab` UI with cluster state SVG visualizer, timing comparisons, and total variation distance analysis.
 - Complete scientific evaluation documents: `docs/phase-4-bqc-research-design.md`, `docs/phase-4-bqc-architecture.md`, `docs/phase-4-bqc-results.md`.
 
-### ✅ Phase 5: QUBO / Simulated Annealing Fleet Routing & Optimization (Completed)
+### Phase 5: QUBO / Simulated Annealing Fleet Routing & Optimization (Completed)
 - Capacitated Multi-Vehicle Routing Problem (CVRP) mathematical formulation.
 - Quadratic Unconstrained Binary Optimization (QUBO) Hamiltonian with quadratic capacity, battery range, and workload balance penalties.
 - Simulated Annealing optimization engine with Metropolis-Hastings acceptance and temperature decay schedules.
