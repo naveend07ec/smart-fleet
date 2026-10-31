@@ -1,0 +1,80 @@
+{
+  "128B": {
+    "exact_plaintext_bytes": 128,
+    "raw_aesgcm_ciphertext_bytes": 144,
+    "raw_expansion_bytes": 16,
+    "full_json_bundle_bytes": 822,
+    "total_bundle_overhead_bytes": 694,
+    "bundle_overhead_percent": 542.2,
+    "sample_count": 5,
+    "encryption_timing": {
+      "median_ms": 5349.73,
+      "mean_ms": 5312.67,
+      "stdev_ms": 151.2,
+      "min_ms": 5060.42,
+      "max_ms": 5462.35
+    },
+    "decryption_timing": {
+      "median_ms": 4684.07,
+      "mean_ms": 4680.79,
+      "stdev_ms": 28.23,
+      "min_ms": 4651.18,
+      "max_ms": 4721.36
+    },
+    "authorized_success_rate": "5/5 (100.0%)",
+    "unauthorized_rejection_rate": "5/5 (100.0%)",
+    "tamper_rejection_rate": "5/5 (100.0%)"
+  },
+  "512B": {
+    "exact_plaintext_bytes": 512,
+    "raw_aesgcm_ciphertext_bytes": 528,
+    "raw_expansion_bytes": 16,
+    "full_json_bundle_bytes": 1335,
+    "total_bundle_overhead_bytes": 823,
+    "bundle_overhead_percent": 160.7,
+    "sample_count": 5,
+    "encryption_timing": {
+      "median_ms": 5377.61,
+      "mean_ms": 5388.34,
+      "stdev_ms": 215.47,
+      "min_ms": 5126.37,
+      "max_ms": 5663.88
+    },
+    "decryption_timing": {
+      "median_ms": 4726.55,
+      "mean_ms": 4671.32,
+      "stdev_ms": 241.05,
+      "min_ms": 4255.67,
+      "max_ms": 4857.18
+    },
+    "authorized_success_rate": "5/5 (100.0%)",
+    "unauthorized_rejection_rate": "5/5 (100.0%)",
+    "tamper_rejection_rate": "5/5 (100.0%)"
+  },
+  "2KB": {
+    "exact_plaintext_bytes": 2048,
+    "raw_aesgcm_ciphertext_bytes": 2064,
+    "raw_expansion_bytes": 16,
+    "full_json_bundle_bytes": 3385,
+    "total_bundle_overhead_bytes": 1337,
+    "bundle_overhead_percent": 65.3,
+    "sample_count": 5,
+    "encryption_timing": {
+      "median_ms": 4962.34,
+      "mean_ms": 4936.73,
+      "stdev_ms": 137.37,
+      "min_ms": 4752.91,
+      "max_ms": 5082.17
+    },
+    "decryption_timing": {
+      "median_ms": 4424.23,
+      "mean_ms": 4436.85,
+      "stdev_ms": 59.54,
+      "min_ms": 4374.24,
+      "max_ms": 4520.07
+    },
+    "authorized_success_rate": "5/5 (100.0%)",
+    "unauthorized_rejection_rate": "5/5 (100.0%)",
+    "tamper_rejection_rate": "5/5 (100.0%)"
+  }
+}

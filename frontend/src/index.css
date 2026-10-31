@@ -1,0 +1,1242 @@
+/* ==============================================================================
+   IoT-Driven Smart Transportation and Fleet Management System
+   Theme: The Titanium Silver (Monochrome Minimalist) — Apple iPhone Pro Aesthetic
+   • Base White: #FFFFFF (Pure White) — Primary background for massive breathing room
+   • Base Black: #0A0A0A (Deep Obsidian) — High-contrast typography, heavy headers, CTA
+   • Light Accent: #E2E8F0 (Liquid Silver) — Sleek borders, button backdrops, divisions
+   Typography: SF Pro / San Francisco (-apple-system, BlinkMacSystemFont, SF Pro Display, SF Pro Text)
+   Style: Apple Store Vibe Top Navbar • Full-Screen Dashboard • Pure Metallic Precision
+   ============================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* Typography: SF Pro / San Francisco Font Stack */
+  --font-family-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", "Helvetica Neue", "Inter", sans-serif;
+  --font-family-base: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", "Helvetica Neue", "Inter", sans-serif;
+  --font-family-mono: "SF Mono", "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
+
+  /* ============================================================================
+     The Titanium Silver Monochrome Palette
+     #FFFFFF - Pure White (Primary Background, Maximum Breathing Room)
+     #0A0A0A - Deep Obsidian (Typography, Heavy Headers, Primary Elements)
+     #E2E8F0 - Liquid Silver (Sleek Borders, Card Divisions, Button Backdrops)
+     ============================================================================ */
+  --base-white: #FFFFFF;
+  --deep-obsidian: #0A0A0A;
+  --liquid-silver: #E2E8F0;
+  --liquid-silver-light: #F8FAFC;
+  --titanium-slate: #64748B;
+  --titanium-border: #CBD5E1;
+
+  /* Background Hierarchy */
+  --bg-primary: #FFFFFF;          /* Pure White Base */
+  --bg-surface: #FFFFFF;          /* Crisp White Surface */
+  --bg-surface-elevated: #F8FAFC; /* Light Liquid Silver Mist */
+  --bg-surface-subtle: #F1F5F9;   /* Liquid Silver Soft Tint */
+  --bg-surface-hover: #E2E8F0;    /* Interactive Metallic Hover */
+  --bg-charcoal: #0A0A0A;         /* Deep Obsidian Spotlight Card */
+  --bg-charcoal-elevated: #18181B;
+
+  /* Precision Structural Borders */
+  --border-subtle: #F1F5F9;
+  --border-strong: #E2E8F0;       /* Liquid Silver structural border */
+  --border-accent: #0A0A0A;       /* Deep Obsidian contrast border */
+  --border-titanium: #CBD5E1;     /* Brushed Titanium border */
+
+  /* Typographic Contrast */
+  --text-primary: #0A0A0A;        /* Deep Obsidian for maximum optical sharpness */
+  --text-secondary: #475569;      /* Titanium slate for secondary context */
+  --text-muted: #94A3B8;          /* Refined cool gray for metadata */
+  --text-inverse: #FFFFFF;        /* Pure white text on deep obsidian buttons/cards */
+
+  /* Monochromatic Accent & Hardware Finish */
+  --primary: #0A0A0A;             /* Deep Obsidian primary */
+  --primary-hover: #27272A;       /* Subtle dark slate hover */
+  --primary-active: #000000;      /* Pure black active */
+  --primary-glow: rgba(10, 10, 10, 0.12);
+  --primary-gradient: linear-gradient(180deg, #18181B 0%, #0A0A0A 100%);
+  --silver-gradient: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
+
+  /* Status Colors (Subtle & High-End) */
+  --status-moving: #059669;
+  --status-moving-bg: rgba(5, 150, 105, 0.08);
+  --status-idle: #D97706;
+  --status-idle-bg: rgba(217, 119, 6, 0.08);
+  --status-offline: #DC2626;
+  --status-offline-bg: rgba(220, 38, 38, 0.08);
+
+  /* Soft Rounded Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+
+  /* Titanium Minimalist Precision Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.09), 0 4px 12px rgba(0, 0, 0, 0.04);
+  --shadow-card-dark: 0 16px 36px rgba(0, 0, 0, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom Sleek Titanium Scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--titanium-slate);
+}
+
+body {
+  font-family: var(--font-family-base);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* Headings with San Francisco Font */
+h1, h2, h3, h4, .brand-title, .page-title, .metric-value, .apple-hero-bold {
+  font-family: var(--font-family-display);
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* ==============================================================================
+   Full-Screen Layout (Edge-to-Edge Without Constraining Vertical Sidebar)
+   ============================================================================== */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--bg-primary);
+}
+
+.main-content {
+  margin-left: 0;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Full-Screen Page Container */
+.page-container {
+  padding: 32px 48px;
+  max-width: 1640px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    padding: 20px 16px;
+    gap: 20px;
+  }
+}
+
+/* ==============================================================================
+   Apple Store Vibe Top Navigation Bar (Pure White Frosted Glass & Liquid Silver)
+   ============================================================================== */
+.apple-top-navbar {
+  position: sticky;
+  top: 14px;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  padding: 0 20px;
+  width: 100%;
+  transition: all 0.25s ease;
+}
+
+.apple-navbar-container {
+  pointer-events: auto;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 4px 12px 4px 18px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: saturate(180%) blur(24px);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-full);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apple-navbar-container:hover {
+  border-color: var(--titanium-border);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.apple-navbar-divider {
+  width: 1px;
+  height: 24px;
+  background-color: var(--border-strong);
+  margin: 0 4px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .apple-top-navbar {
+    top: 8px;
+    padding: 0 12px;
+  }
+
+  .apple-navbar-container {
+    width: 100%;
+    border-radius: 18px;
+    padding: 4px 10px;
+    overflow-x: auto;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+}
+
+.apple-navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.apple-brand-logo-img {
+  height: 40px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.06));
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease;
+  display: block;
+}
+
+.apple-navbar-brand:hover .apple-brand-logo-img {
+  transform: scale(1.04);
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
+}
+
+.apple-brand-glyph {
+  width: 30px;
+  height: 30px;
+  background: var(--deep-obsidian);
+  color: var(--base-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.apple-navbar-brand:hover .apple-brand-glyph {
+  transform: scale(1.06);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.apple-brand-text {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.apple-brand-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--deep-obsidian);
+  letter-spacing: -0.02em;
+}
+
+.apple-brand-edition {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--bg-surface-subtle);
+  border: 1px solid var(--border-strong);
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  color: var(--deep-obsidian);
+}
+
+/* Horizontal Apple Store Navigation Links */
+.apple-navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  overflow: visible;
+}
+
+.apple-nav-button {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+  font-family: var(--font-family-base);
+}
+
+.apple-nav-button:hover {
+  color: var(--deep-obsidian);
+  background: var(--bg-surface-subtle);
+}
+
+.apple-nav-button.active {
+  color: var(--deep-obsidian);
+  background: var(--bg-surface-subtle);
+  border-color: var(--border-strong);
+  font-weight: 700;
+}
+
+.apple-nav-button.menu-open {
+  background: var(--bg-surface-subtle);
+  border-color: var(--border-strong);
+}
+
+.apple-nav-icon {
+  opacity: 0.85;
+}
+
+/* Security Dropdown Styling */
+.apple-nav-dropdown-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.apple-nav-chevron {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0.7;
+  margin-left: 1px;
+}
+
+.apple-nav-chevron.rotated {
+  transform: rotate(180deg);
+}
+
+.apple-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 300px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: saturate(180%) blur(24px);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 8px;
+  z-index: 1200;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  animation: appleDropdownFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes appleDropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-6px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+.apple-dropdown-header {
+  padding: 6px 12px 6px 12px;
+  font-size: 0.67rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--titanium-slate);
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 2px;
+}
+
+.apple-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.16s ease;
+  width: 100%;
+  font-family: var(--font-family-base);
+}
+
+.apple-dropdown-item:hover {
+  background: var(--bg-surface-subtle);
+  border-color: var(--border-strong);
+}
+
+.apple-dropdown-item.active {
+  background: var(--bg-surface-subtle);
+  border-color: var(--border-strong);
+}
+
+.apple-dropdown-item-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--base-white);
+  border: 1px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--deep-obsidian);
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.16s ease;
+}
+
+.apple-dropdown-item:hover .apple-dropdown-item-icon,
+.apple-dropdown-item.active .apple-dropdown-item-icon {
+  background: var(--deep-obsidian);
+  color: var(--base-white);
+  border-color: var(--deep-obsidian);
+}
+
+.apple-dropdown-item-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.apple-dropdown-item-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--deep-obsidian);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.apple-dropdown-item-desc {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.25;
+}
+
+.apple-dropdown-current-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--deep-obsidian);
+}
+
+.apple-dropdown-check {
+  color: var(--deep-obsidian);
+  flex-shrink: 0;
+}
+
+.apple-navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.apple-status-capsule {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 600;
+  border: 1px solid var(--border-strong);
+  background: var(--base-white);
+}
+
+.apple-status-capsule.running {
+  border-color: rgba(5, 150, 105, 0.35);
+  background: rgba(5, 150, 105, 0.05);
+  color: var(--status-moving);
+}
+
+.apple-status-capsule.idle {
+  border-color: var(--border-strong);
+  background: var(--bg-surface-elevated);
+  color: var(--text-muted);
+}
+
+.apple-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+.apple-status-capsule.running .apple-status-dot {
+  background-color: var(--status-moving);
+  box-shadow: 0 0 6px var(--status-moving);
+}
+
+/* ==============================================================================
+   Simulation Disclaimer Sub-Bar
+   ============================================================================== */
+.simulation-banner {
+  background: var(--bg-surface-elevated);
+  border-bottom: 1px solid var(--border-strong);
+  padding: 8px 48px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .simulation-banner {
+    padding: 8px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.banner-badge {
+  background: var(--deep-obsidian);
+  color: var(--base-white);
+  padding: 2px 9px;
+  border-radius: var(--radius-full);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ==============================================================================
+   Minimalist Pro Dashboard & Page Header
+   ============================================================================== */
+.minimal-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .minimal-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+}
+
+.minimal-title {
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--deep-obsidian);
+  font-family: var(--font-family-display);
+  line-height: 1.15;
+  margin-bottom: 4px;
+}
+
+.minimal-subtitle {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  font-family: var(--font-family-base);
+}
+
+.minimal-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.apple-btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 18px;
+  background: var(--deep-obsidian);
+  color: var(--base-white);
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  font-family: var(--font-family-base);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.apple-btn-pill:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+
+
+/* ==============================================================================
+   Metric / Stat Cards (Pure White & Liquid Silver Precision)
+   ============================================================================== */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.metric-card {
+  background: var(--base-white);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-card:hover {
+  border-color: var(--titanium-border);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.metric-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.metric-value {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--deep-obsidian);
+  line-height: 1.15;
+}
+
+.metric-subtext {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* ==============================================================================
+   Panels & Dashboard Cards
+   ============================================================================== */
+.panel {
+  background: var(--base-white);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.panel-header {
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--base-white);
+}
+
+.panel-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--deep-obsidian);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel-body {
+  padding: 24px;
+}
+
+/* Full-Screen Map Container */
+.map-container {
+  height: 480px;
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--border-strong);
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-family: var(--font-family-base);
+}
+
+.status-badge.moving {
+  color: #065F46;
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+}
+
+.status-badge.idle {
+  color: #92400E;
+  background: #FFFBEB;
+  border: 1px solid #FDE68A;
+}
+
+.status-badge.offline {
+  color: #991B1B;
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+/* Tables in Liquid Silver Minimalist Style */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.85rem;
+}
+
+.custom-table th {
+  padding: 13px 20px;
+  background-color: var(--bg-surface-elevated);
+  color: var(--text-secondary);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-strong);
+  white-space: nowrap;
+  font-family: var(--font-family-base);
+}
+
+.custom-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.custom-table tr:hover td {
+  background-color: var(--bg-surface-elevated);
+}
+
+/* Forms & Inputs */
+.form-input, .form-select {
+  background-color: var(--base-white);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--deep-obsidian);
+  padding: 9px 14px;
+  font-size: 0.88rem;
+  outline: none;
+  transition: all 0.18s ease;
+  font-family: var(--font-family-base);
+}
+
+.form-input:focus, .form-select:focus {
+  border-color: var(--deep-obsidian);
+  box-shadow: 0 0 0 3px rgba(10, 10, 10, 0.08);
+  background-color: var(--base-white);
+}
+
+/* Buttons with Titanium Silver Precision */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 18px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: var(--font-family-base);
+}
+
+.btn-primary {
+  background: var(--deep-obsidian);
+  color: var(--base-white);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+.btn-secondary {
+  background-color: var(--base-white);
+  border-color: var(--border-strong);
+  color: var(--deep-obsidian);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--bg-surface-subtle);
+  border-color: var(--titanium-border);
+}
+
+.btn-danger {
+  background-color: #FEF2F2;
+  border-color: #FECACA;
+  color: #DC2626;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background-color: #DC2626;
+  color: var(--base-white);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Modals */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(10, 10, 10, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  padding: 16px;
+}
+
+.modal-content {
+  background: var(--base-white);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 520px;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-footer {
+  padding: 16px 24px;
+  border-top: 1px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  background-color: var(--bg-surface-elevated);
+}
+
+/* Leaflet Container (Clean Titanium Silver Styling) */
+.leaflet-container {
+  background-color: #F8FAFC !important;
+  font-family: var(--font-family-base) !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--base-white) !important;
+  color: var(--deep-obsidian) !important;
+  border: 1px solid var(--border-strong) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.leaflet-popup-tip {
+  background: var(--base-white) !important;
+}
+
+/* Loading & Empty States */
+.state-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+  gap: 12px;
+  color: var(--text-muted);
+}
+
+.state-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--deep-obsidian);
+  font-family: var(--font-family-display);
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--border-strong);
+  border-top-color: var(--deep-obsidian);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Battery Indicator Bar */
+.battery-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.battery-bar {
+  width: 48px;
+  height: 7px;
+  background-color: var(--border-strong);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.battery-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease;
+}
+
+/* Vehicle Marker: Fixed transform to prevent zoom displacement */
+.leaflet-marker-icon.sim-vehicle-marker {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  border: none !important;
+  background: transparent !important;
+}
+
+@keyframes nav-radar-pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.95;
+  }
+  65% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+.sim-pulse-ring {
+  animation: nav-radar-pulse 2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+  transform-origin: center;
+}
+
+/* ==============================================================================
+   Minimalist Modern Footer with Official SmartFleet Logo
+   ============================================================================== */
+.apple-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-surface-elevated);
+  padding: 32px 48px;
+}
+
+.apple-footer-content {
+  max-width: 1640px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.apple-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.apple-footer-logo {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+}
+
+.apple-footer-tagline {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.apple-footer-copy {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .apple-footer {
+    padding: 24px 16px;
+  }
+  .apple-footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+}
+
+/* ==============================================================================
+   Security Lab Attack Vector & Verification Cards (Clean Luxury Apple Aesthetic)
+   ============================================================================== */
+.security-demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.security-demo-card {
+  background: var(--base-white);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative;
+}
+
+.security-demo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  border-color: var(--titanium-border);
+}
+
+.security-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.security-card-pill {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+}
+
+.security-card-pill.authorized {
+  background: rgba(5, 150, 105, 0.08);
+  color: #059669;
+  border: 1px solid rgba(5, 150, 105, 0.22);
+}
+
+.security-card-pill.attack {
+  background: rgba(220, 38, 38, 0.06);
+  color: #DC2626;
+  border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.security-card-pill.tamper {
+  background: rgba(217, 119, 6, 0.07);
+  color: #D97706;
+  border: 1px solid rgba(217, 119, 6, 0.22);
+}
+
+.security-card-pill.replay {
+  background: rgba(99, 102, 241, 0.07);
+  color: #4F46E5;
+  border: 1px solid rgba(99, 102, 241, 0.22);
+}
+
+.security-card-icon-halo {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.security-card-icon-halo.authorized {
+  background: rgba(5, 150, 105, 0.1);
+  color: #059669;
+}
+
+.security-card-icon-halo.attack {
+  background: rgba(220, 38, 38, 0.08);
+  color: #DC2626;
+}
+
+.security-card-icon-halo.tamper {
+  background: rgba(217, 119, 6, 0.08);
+  color: #D97706;
+}
+
+.security-card-icon-halo.replay {
+  background: rgba(99, 102, 241, 0.08);
+  color: #4F46E5;
+}
+
+.security-card-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--deep-obsidian);
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.security-card-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin-bottom: 16px;
+  min-height: 38px;
+}
+
+.security-btn-authorized {
+  width: 100%;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  background: var(--deep-obsidian);
+  color: var(--base-white);
+  border: 1px solid var(--deep-obsidian);
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: all 0.18s ease;
+  font-family: var(--font-family-base);
+}
+
+.security-btn-authorized:hover:not(:disabled) {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+.security-btn-attack {
+  width: 100%;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  background: var(--base-white);
+  color: var(--deep-obsidian);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  transition: all 0.18s ease;
+  font-family: var(--font-family-base);
+}
+
+.security-btn-attack:hover:not(:disabled) {
+  background: var(--bg-surface-subtle);
+  border-color: var(--titanium-border);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+}
+
+.security-btn-attack:disabled,
+.security-btn-authorized:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
