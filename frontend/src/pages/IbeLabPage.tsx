@@ -622,44 +622,64 @@ export const IbeLabPage: React.FC = () => {
             <table className="custom-table">
               <thead>
                 <tr>
-                  <th>Experiment ID</th>
-                  <th>Recipient ID</th>
-                  <th>Payload Size</th>
-                  <th>Enc Time</th>
-                  <th>Dec Time</th>
-                  <th>Authorized</th>
-                  <th>Unauthorized</th>
-                  <th>Tamper Passed</th>
+                  <th style={{ minWidth: '160px' }}>Experiment ID</th>
+                  <th style={{ minWidth: '180px' }}>Recipient ID</th>
+                  <th style={{ minWidth: '120px' }}>Payload Size</th>
+                  <th style={{ minWidth: '110px' }}>Enc Time</th>
+                  <th style={{ minWidth: '110px' }}>Dec Time</th>
+                  <th style={{ minWidth: '110px' }}>Authorized</th>
+                  <th style={{ minWidth: '120px' }}>Unauthorized</th>
+                  <th style={{ minWidth: '130px' }}>Tamper Integrity</th>
                 </tr>
               </thead>
               <tbody>
                 {experiments.length === 0 ? (
                   <tr>
-                    <td colSpan={8} style={{ textAlign: 'center', padding: '30px', color: 'var(--text-muted)' }}>
+                    <td colSpan={8} style={{ textAlign: 'center', padding: '36px 20px', color: 'var(--text-muted)' }}>
                       No experiment trials recorded yet. Run an experiment above to log metrics.
                     </td>
                   </tr>
                 ) : (
                   experiments.map((exp) => (
                     <tr key={exp.id}>
-                      <td style={{ fontFamily: 'var(--font-family-mono)', color: '#60a5fa' }}>{exp.experiment_id}</td>
-                      <td>{exp.recipient_identity}</td>
-                      <td>{exp.payload_size_bytes} B</td>
-                      <td>{exp.encryption_duration_ms} ms</td>
-                      <td>{exp.decryption_duration_ms} ms</td>
                       <td>
-                        <span style={{ color: exp.authorized_success ? '#10b981' : '#ef4444', fontWeight: 600 }}>
+                        <code style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--deep-obsidian)', background: 'var(--bg-surface-subtle)', padding: '3px 8px', borderRadius: '6px', border: '1px solid var(--border-strong)' }}>
+                          {exp.experiment_id}
+                        </code>
+                      </td>
+                      <td>
+                        <span style={{ fontFamily: 'var(--font-family-mono)', fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
+                          {exp.recipient_identity}
+                        </span>
+                      </td>
+                      <td>
+                        <strong style={{ fontSize: '0.84rem', color: 'var(--deep-obsidian)' }}>
+                          {exp.payload_size_bytes.toLocaleString()} B
+                        </strong>
+                      </td>
+                      <td>
+                        <span style={{ fontFamily: 'var(--font-family-mono)', fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
+                          {exp.encryption_duration_ms > 0 ? `${Number(exp.encryption_duration_ms).toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 })} ms` : '—'}
+                        </span>
+                      </td>
+                      <td>
+                        <span style={{ fontFamily: 'var(--font-family-mono)', fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
+                          {exp.decryption_duration_ms > 0 ? `${Number(exp.decryption_duration_ms).toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 })} ms` : '—'}
+                        </span>
+                      </td>
+                      <td>
+                        <span style={{ fontSize: '0.72rem', padding: '3px 8px', borderRadius: 'var(--radius-full)', fontWeight: 700, background: exp.authorized_success ? 'rgba(5, 150, 105, 0.08)' : 'rgba(220, 38, 38, 0.08)', color: exp.authorized_success ? '#059669' : '#DC2626', border: `1px solid ${exp.authorized_success ? 'rgba(5, 150, 105, 0.25)' : 'rgba(220, 38, 38, 0.25)'}` }}>
                           {exp.authorized_success ? '✓ Match' : '✗ Failed'}
                         </span>
                       </td>
                       <td>
-                        <span style={{ color: exp.unauthorized_rejected ? '#10b981' : '#ef4444', fontWeight: 600 }}>
+                        <span style={{ fontSize: '0.72rem', padding: '3px 8px', borderRadius: 'var(--radius-full)', fontWeight: 700, background: exp.unauthorized_rejected ? 'rgba(5, 150, 105, 0.08)' : 'rgba(220, 38, 38, 0.08)', color: exp.unauthorized_rejected ? '#059669' : '#DC2626', border: `1px solid ${exp.unauthorized_rejected ? 'rgba(5, 150, 105, 0.25)' : 'rgba(220, 38, 38, 0.25)'}` }}>
                           {exp.unauthorized_rejected ? '✓ Blocked' : '✗ Leaked'}
                         </span>
                       </td>
                       <td>
-                        <span style={{ color: exp.tamper_check_passed ? '#10b981' : '#ef4444', fontWeight: 600 }}>
-                          {exp.tamper_check_passed ? '✓ Passed' : '✗ Failed'}
+                        <span style={{ fontSize: '0.72rem', padding: '3px 8px', borderRadius: 'var(--radius-full)', fontWeight: 700, background: exp.tamper_check_passed ? 'rgba(5, 150, 105, 0.08)' : 'rgba(220, 38, 38, 0.08)', color: exp.tamper_check_passed ? '#059669' : '#DC2626', border: `1px solid ${exp.tamper_check_passed ? 'rgba(5, 150, 105, 0.25)' : 'rgba(220, 38, 38, 0.25)'}` }}>
+                          {exp.tamper_check_passed ? '✓ Valid' : '✗ Failed'}
                         </span>
                       </td>
                     </tr>

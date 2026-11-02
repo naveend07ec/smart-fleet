@@ -747,25 +747,25 @@ export const SecureTransmissionLabPage: React.FC = () => {
         </div>
 
         <div className="table-responsive">
-          <table className="data-table">
+          <table className="custom-table">
             <thead>
               <tr>
-                <th>Transmission ID</th>
-                <th>Vehicle</th>
-                <th>Mode</th>
-                <th>Category</th>
-                <th>Payload Size</th>
-                <th>Enc Time</th>
-                <th>Dec Time</th>
-                <th>Total Latency</th>
-                <th>Status</th>
-                <th>Inspect</th>
+                <th style={{ minWidth: '170px' }}>Transmission ID</th>
+                <th style={{ minWidth: '160px' }}>Vehicle / Node</th>
+                <th style={{ minWidth: '160px' }}>Mode & Auth</th>
+                <th style={{ minWidth: '100px' }}>Category</th>
+                <th style={{ minWidth: '160px' }}>Payload Size</th>
+                <th style={{ minWidth: '120px' }}>Enc Time</th>
+                <th style={{ minWidth: '120px' }}>Dec Time</th>
+                <th style={{ minWidth: '140px' }}>Total Latency</th>
+                <th style={{ minWidth: '130px' }}>Status</th>
+                <th style={{ minWidth: '90px', textAlign: 'center' }}>Inspect</th>
               </tr>
             </thead>
             <tbody>
               {transmissions.length === 0 ? (
                 <tr>
-                  <td colSpan={10} style={{ textAlign: 'center', padding: '30px', color: '#94a3b8' }}>
+                  <td colSpan={10} style={{ textAlign: 'center', padding: '36px 20px', color: 'var(--text-muted)' }}>
                     No transmission records found. Run an experiment above to collect data.
                   </td>
                 </tr>
@@ -773,81 +773,155 @@ export const SecureTransmissionLabPage: React.FC = () => {
                 transmissions.map((tx) => (
                   <tr key={tx.transmission_id}>
                     <td>
-                      <code>{tx.transmission_id}</code>
-                      {tx.batch_id && (
-                        <div style={{ fontSize: '0.72rem', color: '#94a3b8' }}>
-                          Batch: {tx.batch_id.slice(-8)}
-                        </div>
-                      )}
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
+                        <code style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--deep-obsidian)', background: 'var(--bg-surface-subtle)', padding: '3px 8px', borderRadius: '6px', border: '1px solid var(--border-strong)', width: 'fit-content' }}>
+                          {tx.transmission_id}
+                        </code>
+                        {tx.batch_id && (
+                          <span style={{ fontSize: '0.70rem', color: 'var(--text-muted)' }}>
+                            Batch: {tx.batch_id.slice(-8)}
+                          </span>
+                        )}
+                      </div>
                     </td>
                     <td>
-                      <strong>{tx.vehicle_identifier}</strong>
-                      <div style={{ fontSize: '0.72rem', color: '#94a3b8' }}>{tx.sender_identity}</div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                        <strong style={{ fontSize: '0.86rem', color: 'var(--deep-obsidian)' }}>
+                          {tx.vehicle_identifier}
+                        </strong>
+                        <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontFamily: 'var(--font-family-mono)' }}>
+                          {tx.sender_identity}
+                        </span>
+                      </div>
                     </td>
                     <td>
-                      <span
-                        style={{
-                          fontSize: '0.72rem',
-                          padding: '2px 6px',
-                          borderRadius: '4px',
-                          fontWeight: 600,
-                          background: tx.transmission_mode === 'plaintext' ? 'rgba(59, 130, 246, 0.2)' : 'rgba(16, 185, 129, 0.2)',
-                          color: tx.transmission_mode === 'plaintext' ? '#60a5fa' : '#34d399'
-                        }}
-                      >
-                        {tx.transmission_mode === 'plaintext' ? 'Baseline (Mode A)' : 'Protected (Mode B)'}
-                      </span>
-                      {tx.transmission_mode === 'ibe_protected' && (
-                        <div style={{ marginTop: '3px' }}>
-                          {tx.signature_verified ? (
-                            <span style={{ fontSize: '0.68rem', color: '#34d399', display: 'flex', alignItems: 'center', gap: '3px' }}>
-                              <ShieldCheck size={11} /> Ed25519 Verified
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', alignItems: 'flex-start' }}>
+                        <span
+                          style={{
+                            fontSize: '0.72rem',
+                            padding: '3px 9px',
+                            borderRadius: 'var(--radius-full)',
+                            fontWeight: 700,
+                            letterSpacing: '0.02em',
+                            background: tx.transmission_mode === 'plaintext' ? 'rgba(59, 130, 246, 0.08)' : 'rgba(5, 150, 105, 0.08)',
+                            color: tx.transmission_mode === 'plaintext' ? '#2563EB' : '#059669',
+                            border: `1px solid ${tx.transmission_mode === 'plaintext' ? 'rgba(59, 130, 246, 0.25)' : 'rgba(5, 150, 105, 0.25)'}`
+                          }}
+                        >
+                          {tx.transmission_mode === 'plaintext' ? 'Baseline (Mode A)' : 'Protected (Mode B)'}
+                        </span>
+                        {tx.transmission_mode === 'ibe_protected' && (
+                          tx.signature_verified ? (
+                            <span style={{ fontSize: '0.68rem', color: '#059669', display: 'inline-flex', alignItems: 'center', gap: '4px', fontWeight: 600 }}>
+                              <ShieldCheck size={12} /> Ed25519 Verified
                             </span>
                           ) : (
-                            <span style={{ fontSize: '0.68rem', color: '#f87171', display: 'flex', alignItems: 'center', gap: '3px' }}>
-                              <ShieldAlert size={11} /> Auth Unverified
+                            <span style={{ fontSize: '0.68rem', color: '#DC2626', display: 'inline-flex', alignItems: 'center', gap: '4px', fontWeight: 600 }}>
+                              <ShieldAlert size={12} /> Auth Unverified
                             </span>
-                          )}
-                        </div>
-                      )}
+                          )
+                        )}
+                      </div>
                     </td>
-                    <td>
-                      <span style={{ textTransform: 'capitalize', fontSize: '0.78rem' }}>{tx.payload_category}</span>
-                    </td>
-                    <td>
-                      <span style={{ fontSize: '0.78rem' }}>{tx.original_payload_size_bytes} B</span>
-                      {tx.payload_expansion_bytes > 0 && (
-                        <div style={{ fontSize: '0.72rem', color: '#fbbf24' }}>
-                          Env: {tx.encrypted_envelope_size_bytes} B (+{tx.payload_expansion_percent}%)
-                        </div>
-                      )}
-                    </td>
-                    <td style={{ fontSize: '0.8rem' }}>{tx.encryption_duration_ms > 0 ? `${tx.encryption_duration_ms}ms` : '—'}</td>
-                    <td style={{ fontSize: '0.8rem' }}>{tx.decryption_duration_ms > 0 ? `${tx.decryption_duration_ms}ms` : '—'}</td>
-                    <td style={{ fontSize: '0.8rem', fontWeight: 600 }}>{tx.total_duration_ms} ms</td>
                     <td>
                       <span
                         style={{
-                          fontSize: '0.72rem',
-                          padding: '2px 6px',
-                          borderRadius: '4px',
+                          fontSize: '0.74rem',
                           fontWeight: 600,
-                          background: tx.status === 'success' ? 'rgba(16, 185, 129, 0.2)' : 'rgba(239, 68, 68, 0.2)',
-                          color: tx.status === 'success' ? '#34d399' : '#f87171'
+                          padding: '3px 8px',
+                          borderRadius: '6px',
+                          background: 'var(--bg-surface-subtle)',
+                          border: '1px solid var(--border-subtle)',
+                          color: 'var(--text-secondary)',
+                          textTransform: 'capitalize'
                         }}
                       >
-                        {tx.status.toUpperCase()}
+                        {tx.payload_category}
                       </span>
-                      {tx.rejection_reason && (
-                        <div style={{ fontSize: '0.68rem', color: '#fca5a5', maxWidth: '140px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={tx.rejection_reason}>
-                          {tx.rejection_reason}
-                        </div>
-                      )}
                     </td>
                     <td>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                        <div style={{ fontSize: '0.84rem', fontWeight: 600, color: 'var(--deep-obsidian)' }}>
+                          {tx.original_payload_size_bytes.toLocaleString()} B
+                          <span style={{ fontSize: '0.70rem', color: 'var(--text-muted)', fontWeight: 400, marginLeft: '4px' }}>raw</span>
+                        </div>
+                        {tx.payload_expansion_bytes > 0 && (
+                          <span
+                            style={{
+                              fontSize: '0.70rem',
+                              fontWeight: 600,
+                              color: '#B45309',
+                              background: 'rgba(245, 158, 11, 0.1)',
+                              border: '1px solid rgba(245, 158, 11, 0.25)',
+                              padding: '2px 7px',
+                              borderRadius: '4px',
+                              width: 'fit-content'
+                            }}
+                          >
+                            Env: {tx.encrypted_envelope_size_bytes.toLocaleString()} B (+{tx.payload_expansion_percent}%)
+                          </span>
+                        )}
+                      </div>
+                    </td>
+                    <td>
+                      <span style={{ fontFamily: 'var(--font-family-mono)', fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
+                        {tx.encryption_duration_ms > 0 ? `${Number(tx.encryption_duration_ms).toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 })} ms` : '—'}
+                      </span>
+                    </td>
+                    <td>
+                      <span style={{ fontFamily: 'var(--font-family-mono)', fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
+                        {tx.decryption_duration_ms > 0 ? `${Number(tx.decryption_duration_ms).toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 })} ms` : '—'}
+                      </span>
+                    </td>
+                    <td>
+                      <span
+                        style={{
+                          fontFamily: 'var(--font-family-mono)',
+                          fontSize: '0.84rem',
+                          fontWeight: 700,
+                          color: 'var(--deep-obsidian)',
+                          background: 'var(--bg-surface-elevated)',
+                          padding: '4px 10px',
+                          borderRadius: '8px',
+                          border: '1px solid var(--border-strong)',
+                          display: 'inline-block'
+                        }}
+                      >
+                        {Number(tx.total_duration_ms).toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 })} ms
+                      </span>
+                    </td>
+                    <td>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                        <span
+                          style={{
+                            fontSize: '0.72rem',
+                            padding: '3px 9px',
+                            borderRadius: 'var(--radius-full)',
+                            fontWeight: 700,
+                            letterSpacing: '0.04em',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '5px',
+                            background: tx.status === 'success' ? 'rgba(5, 150, 105, 0.08)' : 'rgba(220, 38, 38, 0.08)',
+                            color: tx.status === 'success' ? '#059669' : '#DC2626',
+                            border: `1px solid ${tx.status === 'success' ? 'rgba(5, 150, 105, 0.25)' : 'rgba(220, 38, 38, 0.25)'}`,
+                            width: 'fit-content'
+                          }}
+                        >
+                          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'currentColor' }} />
+                          {tx.status.toUpperCase()}
+                        </span>
+                        {tx.rejection_reason && (
+                          <span style={{ fontSize: '0.68rem', color: '#DC2626', maxWidth: '140px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={tx.rejection_reason}>
+                            {tx.rejection_reason}
+                          </span>
+                        )}
+                      </div>
+                    </td>
+                    <td style={{ textAlign: 'center' }}>
                       <button
-                        className="btn"
-                        style={{ fontSize: '0.74rem', padding: '2px 8px' }}
+                        className="btn btn-secondary"
+                        style={{ fontSize: '0.74rem', fontWeight: 600, padding: '4px 12px', borderRadius: 'var(--radius-full)' }}
                         onClick={() => setSelectedTx(tx)}
                       >
                         Details

@@ -760,34 +760,48 @@ h1, h2, h3, h4, .brand-title, .page-title, .metric-value, .apple-hero-bold {
 .table-responsive {
   width: 100%;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong);
+  background: var(--base-white);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
-.custom-table {
+.custom-table, .data-table, .apple-table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
   font-size: 0.85rem;
 }
 
-.custom-table th {
-  padding: 13px 20px;
+.custom-table th, .data-table th, .apple-table th {
+  padding: 13px 18px;
   background-color: var(--bg-surface-elevated);
   color: var(--text-secondary);
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   border-bottom: 1px solid var(--border-strong);
   white-space: nowrap;
   font-family: var(--font-family-base);
 }
 
-.custom-table td {
-  padding: 14px 20px;
-  border-bottom: 1px solid var(--border-strong);
+.custom-table td, .data-table td, .apple-table td {
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--border-subtle);
   color: var(--text-primary);
+  font-size: 0.84rem;
   white-space: nowrap;
+  vertical-align: middle;
 }
 
-.custom-table tr:hover td {
-  background-color: var(--bg-surface-elevated);
+.custom-table tr:hover td, .data-table tr:hover td, .apple-table tr:hover td {
+  background-color: rgba(241, 245, 249, 0.65);
+}
+
+.custom-table tr:last-child td, .data-table tr:last-child td, .apple-table tr:last-child td {
+  border-bottom: none;
 }
 
 /* Forms & Inputs */
